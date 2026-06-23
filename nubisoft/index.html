@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nubisoft — Technology that moves Africa forward</title>
+<meta name="description" content="Nubisoft is an African technology company building a family of practical software and AI products for businesses, schools and communities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,600;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#19210f; --forest:#314025; --forest-2:#3b4c2d; --leaf:#7a9e5a;
+    --sage:#bacca8; --sage-soft:#cedabf; --paper:#f4f6f0; --paper-2:#eaf0e1;
+    --text:#212a1b; --muted:#5e6b4d; --line:#e0e7d4;
+    --books:#7a9e5a; --speech:#c9923e; --edu:#4c84b8; --events:#7a5aa6;
+    --d:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  body{font-family:"Inter",system-ui,sans-serif;color:var(--text);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.display{font-family:"Plus Jakarta Sans",system-ui,sans-serif;line-height:1.08;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--leaf)}
+
+  /* nav */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(10px);background:rgba(25,33,15,0);transition:background .3s,box-shadow .3s}
+  .nav.solid{background:rgba(25,33,15,.92);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px;color:#fff;font-family:"Plus Jakarta Sans";font-weight:800;font-size:1.35rem}
+  .tile{flex:none;border-radius:26%;display:grid;place-items:center}
+  .nav .tile{width:38px;height:38px;background:var(--forest)}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{color:#d6e0c8;font-size:.95rem;font-weight:500}
+  .nav-links a:hover{color:#fff}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:"Plus Jakarta Sans";font-weight:700;font-size:.95rem;padding:12px 22px;border-radius:999px;transition:transform .15s,background .2s,color .2s;cursor:pointer;border:none}
+  .btn-primary{background:var(--sage);color:var(--forest)}
+  .btn-primary:hover{background:#c8d8b7;transform:translateY(-2px)}
+  .btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.35);color:#fff}
+  .btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
+  .menu-btn{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
+
+  /* hero */
+  .hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:112px 0 96px}
+  .hero::before{content:"";position:absolute;inset:0;background:
+     radial-gradient(620px 420px at 82% 8%,rgba(122,158,90,.20),transparent 60%),
+     radial-gradient(520px 360px at 6% 92%,rgba(76,132,184,.12),transparent 60%);pointer-events:none}
+  .hero-in{position:relative}
+  .hero h1{font-size:clamp(2.5rem,6.4vw,4.6rem);font-weight:800;max-width:15ch;margin:18px 0 0}
+  .hero h1 em{font-style:italic;color:var(--sage);font-weight:800}
+  .hero p.lead{margin-top:22px;max-width:54ch;font-size:clamp(1.05rem,1.6vw,1.22rem);color:#cdd8be}
+  .hero .actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+
+  /* product tile strip (signature) */
+  .suite{margin-top:64px}
+  .suite-label{display:flex;align-items:center;gap:14px;color:#9fb087;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px}
+  .suite-label::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(159,176,135,.4),transparent)}
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .ptile{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:20px;transition:transform .2s,border-color .2s,background .2s}
+  .ptile:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.07)}
+  .ptile .tile{width:48px;height:48px;background:var(--sage);margin-bottom:14px}
+  .ptile h3{color:#fff;font-size:1.06rem;font-weight:700}
+  .ptile .status{margin-top:6px;font-size:.78rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;color:#aebd98}
+  .dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+  .ptile .status.live{color:var(--sage)}
+
+  /* generic section */
+  section{padding:88px 0}
+  .sec-head{max-width:60ch}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:800;margin:12px 0 0}
+  .sec-head p{margin-top:14px;color:var(--muted);font-size:1.08rem}
+
+  /* products detail */
+  #products{background:var(--paper)}
+  .pgrid{margin-top:46px;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;gap:20px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+  .pcard:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(49,64,37,.4)}
+  .pcard::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--ac)}
+  .pcard .tile{width:62px;height:62px;background:var(--paper-2)}
+  .pcard h3{font-size:1.3rem;font-weight:700;color:var(--forest)}
+  .pcard h3 span{color:var(--ac)}
+  .pcard p{margin-top:6px;color:var(--muted);font-size:.98rem}
+  .pcard .status{margin-top:12px;font-size:.8rem;font-weight:600;color:var(--muted);display:inline-flex;align-items:center;gap:7px}
+  .pcard .status a{color:var(--forest);font-weight:700;border-bottom:1.5px solid var(--leaf)}
+
+  /* why */
+  #why{background:var(--paper-2)}
+  .why-grid{margin-top:46px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .why-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 28px;display:flex;gap:18px;align-items:flex-start}
+  .why-card .mk{flex:none;width:44px;height:44px;border-radius:12px;background:var(--forest);display:grid;place-items:center;color:var(--sage);font-family:"Plus Jakarta Sans";font-weight:800}
+  .why-card h3{font-size:1.12rem;color:var(--forest);font-weight:700}
+  .why-card p{margin-top:4px;color:var(--muted);font-size:.96rem}
+
+  /* serve */
+  .serve p{font-size:clamp(1.2rem,2.4vw,1.7rem);font-weight:500;color:var(--text);max-width:30ch}
+  .serve .display{font-family:"Plus Jakarta Sans"}
+  .chips{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:.92rem;font-weight:600;color:var(--forest)}
+  .chip.soft{background:transparent;color:var(--muted);border-style:dashed}
+
+  /* vision band */
+  .vision{background:var(--forest);color:#fff}
+  .vision h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:800;max-width:20ch}
+  .vision .eyebrow{color:var(--sage)}
+  .vision .lead{margin-top:16px;color:#d4dec6;max-width:60ch;font-size:1.1rem}
+  .pills{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+  .pill{background:var(--sage);color:var(--forest);border-radius:999px;padding:9px 18px;font-family:"Plus Jakarta Sans";font-weight:700;font-size:.92rem}
+
+  /* contact / footer */
+  .foot{background:var(--ink);color:#cdd8be;padding:72px 0 40px}
+  .foot-top{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:start}
+  .foot .brand{margin-bottom:14px}
+  .foot .tile{width:40px;height:40px;background:var(--forest)}
+  .foot .tag{color:var(--leaf);font-size:.95rem}
+  .foot-c{font-size:.96rem;line-height:1.9}
+  .foot-c a{color:#dbe5cd}
+  .foot-c a:hover{color:#fff}
+  .foot h4{color:#fff;font-family:"Plus Jakarta Sans";font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+  .foot-bottom{margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.84rem;color:#9fb087}
+  .foot-intro .foot-c{margin-top:22px}
+  .cform{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px}
+  .cform h4{margin-bottom:16px}
+  .cform label{display:block;font-size:.8rem;color:var(--sage);font-weight:600;margin-bottom:13px}
+  .cform input,.cform textarea{width:100%;margin-top:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:11px 13px;color:#fff;font-family:inherit;font-size:.95rem}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--sage)}
+  .cform textarea{resize:vertical}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .fnote{margin-top:12px;font-size:.85rem;color:var(--leaf);min-height:1em}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:860px){
+    .nav-links{position:fixed;inset:72px 0 auto 0;flex-direction:column;background:rgba(25,33,15,.98);padding:22px 24px;gap:18px;transform:translateY(-130%);transition:transform .3s;align-items:flex-start}
+    .nav-links.open{transform:none}
+    .menu-btn{display:block}
+    .tiles{grid-template-columns:repeat(2,1fr)}
+    .pgrid,.why-grid{grid-template-columns:1fr}
+    .foot-top{grid-template-columns:1fr;gap:36px}
+    .frow{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="tile" data-mark="parent"></span> Nubisoft
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#products">Products</a>
+      <a href="#why">Why Nubisoft</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-in">
+    <span class="eyebrow">African technology company</span>
+    <h1>We build a family of products that <em>move Africa forward.</em></h1>
+    <p class="lead">Nubisoft creates simple, reliable software and AI for the businesses, schools and communities doing the real work. We don’t sell dreams — we build tools that solve everyday problems.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#products">Explore our products</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+
+    <div class="suite reveal">
+      <div class="suite-label">One company · four products</div>
+      <div class="tiles" id="heroTiles"></div>
+    </div>
+  </div>
+</header>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The product family</span>
+      <h2>One green family. Four ways to work smarter.</h2>
+      <p>Same trusted company behind each one. Different problem solved by each. NubiBooks, NubiSpeech and NubiEdu are available today; NubiEvents is on the way.</p>
+    </div>
+    <div class="pgrid" id="prodGrid"></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Why Nubisoft</span>
+      <h2>Built around how Africa actually works.</h2>
+    </div>
+    <div class="why-grid" id="whyGrid"></div>
+  </div>
+</section>
+
+<!-- SERVE -->
+<section class="serve">
+  <div class="wrap reveal">
+    <span class="eyebrow">Who we serve</span>
+    <p class="display" style="margin-top:12px">For the people building, teaching and running things across Africa.</p>
+    <div class="chips">
+      <span class="chip">Small &amp; medium businesses</span>
+      <span class="chip">Startups</span>
+      <span class="chip">Schools</span>
+      <span class="chip">Organisations</span>
+      <span class="chip soft">Governments</span>
+      <span class="chip soft">Enterprises</span>
+      <span class="chip soft">Developers</span>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision">
+  <div class="wrap reveal">
+    <span class="eyebrow">Our vision</span>
+    <h2>To become Africa’s most trusted builder of technology products.</h2>
+    <p class="lead">For business, education, communication and digital transformation — practical tools people can depend on.</p>
+    <div class="pills">
+      <span class="pill">Simplicity</span><span class="pill">Reliability</span>
+      <span class="pill">Innovation</span><span class="pill">Impact</span><span class="pill">Integrity</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CONTACT -->
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-intro">
+        <div class="brand"><span class="tile" data-mark="parent"></span> Nubisoft</div>
+        <div class="tag">Technology that moves Africa forward</div>
+        <div class="foot-c">
+          <h4>Get in touch</h4>
+          Lagos, Nigeria<br>
+          <a href="mailto:hello@nubisoft.ng">hello@nubisoft.ng</a><br>
+          <a href="https://www.nubisoft.ng">www.nubisoft.ng</a>
+        </div>
+      </div>
+      <form class="cform" id="cform" novalidate>
+        <h4>Send us a message</h4>
+        <div class="frow">
+          <label>Name<input type="text" name="name" autocomplete="name" required></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <label>Message<textarea name="message" rows="4" required></textarea></label>
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <p class="fnote" id="fnote" role="status"></p>
+      </form>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Nubisoft Ltd · RC 9588280</span>
+      <span>Lagos, Nigeria</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const FOREST="#314025", SAGE="#bacca8";
+  // build the N rounded-tile mark inline (square bg, N, optional accent leaf)
+  function mark(bg, nColor, accent){
+    const leaf = accent ? `<g transform="rotate(-40 148 27)"><ellipse cx="148" cy="27" rx="26" ry="15" fill="${accent}"/></g>` : "";
+    return `<svg viewBox="0 0 180 180" width="100%" height="100%" aria-hidden="true">
+      <rect x="0" y="0" width="180" height="180" rx="40" fill="${bg}"/>
+      <path d="M52 52 h25 v76 h-25 Z" fill="${nColor}"/>
+      <path d="M103 52 h25 v76 h-25 Z" fill="${nColor}"/>
+      <path d="M52 52 L77 52 L128 128 L103 128 Z" fill="${nColor}"/>
+      ${leaf}
+    </svg>`;
+  }
+  // parent marks in nav + footer
+  document.querySelectorAll('[data-mark="parent"]').forEach(el=>{ el.innerHTML = mark(FOREST, SAGE, null); });
+
+  const products=[
+    {word:"Books", acc:"#7a9e5a", desc:"Voice-first accounting. Record sales, stock, invoices and expenses just by speaking.", status:"Live", link:"https://nubibooks.ng"},
+    {word:"Speech", acc:"#c9923e", desc:"Speech & language AI built for African accents and languages.", status:"Live", link:"https://nubispeech.com"},
+    {word:"Edu", acc:"#4c84b8", desc:"Education technology for schools, teachers and learners.", status:"Live", link:"https://nubiedu.com"},
+    {word:"Events", acc:"#7a5aa6", desc:"Event management without the usual paperwork and stress.", status:"Coming soon", link:"https://nubievents.com"},
+  ];
+
+  // hero tiles
+  document.getElementById('heroTiles').innerHTML = products.map(p=>`
+    <div class="ptile">
+      <span class="tile">${mark(SAGE, FOREST, p.acc)}</span>
+      <h3>Nubi${p.word}</h3>
+      <span class="status ${p.status==='Live'?'live':''}"><span class="dot" style="background:${p.acc}"></span>${p.status}</span>
+    </div>`).join("");
+
+  // product detail cards
+  document.getElementById('prodGrid').innerHTML = products.map(p=>`
+    <div class="pcard" style="--ac:${p.acc}">
+      <span class="tile">${mark(SAGE, FOREST, p.acc)}</span>
+      <div>
+        <h3>Nubi<span>${p.word}</span></h3>
+        <p>${p.desc}</p>
+        <span class="status">${p.status==='Live'
+          ? `● Live · <a href="${p.link}">${p.link.replace('https://','')}</a>`
+          : (p.link ? `○ Coming soon · <a href="${p.link}">${p.link.replace('https://','')}</a>` : '○ Coming soon')}</span>
+      </div>
+    </div>`).join("");
+
+  // why cards
+  const why=[
+    ["S","Simple","Usable on day one. No training, no thick manual to read."],
+    ["R","Reliable","Built to keep working, even on a slow connection."],
+    ["V","Voice & mobile first","Designed for how people here actually work — by phone, by voice."],
+    ["A","Built for Africa","Made around local languages, local money and local realities."],
+  ];
+  document.getElementById('whyGrid').innerHTML = why.map(w=>`
+    <div class="why-card"><span class="mk">${w[0]}</span><div><h3>${w[1]}</h3><p>${w[2]}</p></div></div>`).join("");
+
+  // nav solid on scroll
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>{ nav.classList.toggle('solid', scrollY>20); });
+  // mobile menu
+  const links=document.getElementById('navLinks');
+  document.getElementById('menuBtn').onclick=()=>links.classList.toggle('open');
+  links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+  // reveal
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // contact form -> opens email prefilled (no backend needed).
+  // To receive messages directly on the site later, point the form at a service
+  // like Formspree: set the form's action to your endpoint and method="POST".
+  const cform=document.getElementById('cform');
+  if(cform){
+    cform.addEventListener('submit',e=>{
+      e.preventDefault();
+      const f=new FormData(cform);
+      const name=(f.get('name')||'').trim();
+      const email=(f.get('email')||'').trim();
+      const msg=(f.get('message')||'').trim();
+      const note=document.getElementById('fnote');
+      if(!name||!email||!msg){ note.textContent='Please fill in your name, email and message.'; return; }
+      const subject=encodeURIComponent('Website enquiry from '+name);
+      const body=encodeURIComponent(msg+'\n\n— '+name+' ('+email+')');
+      window.location.href='mailto:hello@nubisoft.ng?subject='+subject+'&body='+body;
+      note.textContent='Opening your email app to send…';
+    });
+  }
+</script>
+</body>
+</html>
