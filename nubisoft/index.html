@@ -283,7 +283,7 @@
 
   const products=[
     {word:"Books", acc:"#7a9e5a", desc:"Voice-first accounting. Record sales, stock, invoices and expenses just by speaking.", status:"Live", link:"https://nubibooks.ng"},
-    {word:"Speech", acc:"#c9923e", desc:"Speech & language AI built for African accents and languages.", status:"Live", link:"https://nubispeech.com"},
+    {word:"Speech", acc:"#c9923e", desc:"Speech & language AI built for African accents and languages.", status:"Live", link:"https://nubispeech.ng"},
     {word:"Edu", acc:"#4c84b8", desc:"Education technology for schools, teachers and learners.", status:"Live", link:"https://nubiedu.com"},
     {word:"Events", acc:"#7a5aa6", desc:"Event management without the usual paperwork and stress.", status:"Coming soon", link:"https://nubievents.com"},
   ];
@@ -304,8 +304,8 @@
         <h3>Nubi<span>${p.word}</span></h3>
         <p>${p.desc}</p>
         <span class="status">${p.status==='Live'
-          ? `● Live · <a href="${p.link}">${p.link.replace('https://','')}</a>`
-          : (p.link ? `○ Coming soon · <a href="${p.link}">${p.link.replace('https://','')}</a>` : '○ Coming soon')}</span>
+          ? `● Live · <a href="${p.link}" target="_blank" rel="noopener">${p.link.replace('https://','')}</a>`
+          : (p.link ? `○ Coming soon · <a href="${p.link}" target="_blank" rel="noopener">${p.link.replace('https://','')}</a>` : '○ Coming soon')}</span>
       </div>
     </div>`).join("");
 
